@@ -37,6 +37,28 @@ app.post("/api/v1/signup", async (req, res) => {
 app.post(('/api/v1/signin'), async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
+    // Demo user - hardcoded credentials that work from anywhere
+    const DEMO_USER = {
+        username: 'demo',
+        password: 'demo123',
+        _id: 'demo-user-id-12345'
+    };
+    // Check if it's the demo user first
+    if (username === DEMO_USER.username && password === DEMO_USER.password) {
+        // Find or create demo user in database
+        let demoUser = await UserModel.findOne({ username: DEMO_USER.username });
+        if (!demoUser) {
+            // Create demo user if doesn't exist
+            demoUser = new UserModel({
+                username: DEMO_USER.username,
+                password: DEMO_USER.password
+            });
+            await demoUser.save();
+        }
+        const token = jwt.sign({ id: demoUser._id }, JWT_PASSWORD, { expiresIn: '24h' });
+        return res.json({ token, isDemo: true });
+    }
+    // Regular user authentication
     const existingUser = await UserModel.findOne({ username, password });
     if (existingUser) {
         const token = jwt.sign({ id: existingUser._id }, JWT_PASSWORD, { expiresIn: '1h' });
