@@ -1,4 +1,5 @@
 # 🧠 Second Brain App
+LIVE LINK : https://second-brain-app-1r1r.vercel.app/
 
 A beautiful **Second Brain App** built with the **MERN stack (MongoDB, Express, React, Node.js)**.  
 This app helps users capture, organize, and retrieve their YouTube videos, tweets, and links in one place — acting as a digital "second brain".
