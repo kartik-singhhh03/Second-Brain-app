@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import { connectDB, ContentModel, UserModel } from './db.js'; // adjust path to your db.ts file
@@ -8,21 +9,29 @@ import { userMiddleware } from './middleware.js'; // adjust path as needed
 import { LinkModel } from './db.js';
 import { random } from "./utils.js";
 const app = express();
+app.use(cors());
 app.use(express.json());
-app.post(('/api/v1/signup'), async (req, res) => {
-    //hash the password here if needed with zod 
+// Signup route
+app.post("/api/v1/signup", async (req, res) => {
     const { username, password } = req.body;
+    // Basic checks (optional but useful)
+    if (!username || !password) {
+        return res.status(400).json({ message: "Username and password are required" });
+    }
     try {
-        await UserModel.create({ username, password });
-        res.json({ message: 'User created successfully' });
+        // check if user already exists
+        const existingUser = await UserModel.findOne({ username });
+        if (existingUser) {
+            return res.status(400).json({ message: "User already exists" });
+        }
+        // create new user
+        const newUser = new UserModel({ username, password });
+        await newUser.save();
+        res.status(201).json({ message: "User created successfully" });
     }
     catch (error) {
-        if (error instanceof mongoose.Error.ValidationError) {
-            res.status(400).json({ message: error.message });
-        }
-        else {
-            res.status(500).json({ message: 'user exists' });
-        }
+        console.error("Signup error:", error);
+        res.status(500).json({ message: "Internal server error" });
     }
 });
 app.post(('/api/v1/signin'), async (req, res) => {
@@ -39,10 +48,12 @@ app.post(('/api/v1/signin'), async (req, res) => {
 });
 app.post('/api/v1/content', userMiddleware, async (req, res) => {
     const link = req.body.link;
-    const type = req.body.title;
+    const title = req.body.title;
+    const type = req.body.type || 'link';
     await ContentModel.create({
-        title: type,
+        title: title,
         link: link,
+        type: type,
         //@ts-ignore
         userId: req.userId,
         tags: []
@@ -131,8 +142,5 @@ connectDB().then(() => {
     });
 }).catch(err => {
     console.error("❌ Failed to connect to MongoDB:", err.message);
-});
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
 });
 //# sourceMappingURL=index.js.map

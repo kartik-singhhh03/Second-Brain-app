@@ -1,1 +1,180 @@
 @import "tailwindcss";
+
+/* Custom Animations */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fog-move-1 {
+  0% {
+    transform: translateX(-100%) translateY(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(100%) translateY(-20%);
+    opacity: 0;
+  }
+}
+
+@keyframes fog-move-2 {
+  0% {
+    transform: translateX(100%) translateY(10%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(-100%) translateY(-10%);
+    opacity: 0;
+  }
+}
+
+@keyframes fog-move-3 {
+  0% {
+    transform: translateX(-50%) translateY(20%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  80% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateX(50%) translateY(-30%);
+    opacity: 0;
+  }
+}
+
+/* Fog Container */
+.fog-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fog {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.25) 0%, rgba(168, 85, 247, 0.15) 30%, transparent 70%);
+  filter: blur(60px);
+}
+
+.fog-1 {
+  top: -20%;
+  animation: fog-move-1 18s ease-in-out infinite;
+}
+
+.fog-2 {
+  top: 20%;
+  animation: fog-move-2 22s ease-in-out infinite;
+  animation-delay: -8s;
+}
+
+.fog-3 {
+  top: 50%;
+  animation: fog-move-3 26s ease-in-out infinite;
+  animation-delay: -15s;
+}
+
+/* Animation Utilities */
+.animate-pulse-slow {
+  animation: pulse-slow 5s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2000ms;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4c1d95;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6d28d9;
+}

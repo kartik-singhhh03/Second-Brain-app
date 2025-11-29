@@ -15,6 +15,7 @@ export const UserModel = model( "User", UserSchema);
 const  ContentSchema = new Schema({
     title: { type: Schema.Types.String, required: true },
     link: { type: Schema.Types.String },
+    type: { type: Schema.Types.String, default: 'link' },
     tags: [{ type: mongoose.Types.ObjectId, ref: 'Tag' }],
     userId:{type: mongoose.Types.ObjectId, ref: 'User', required: true },
     authorId: { type: Schema.Types.String,ref : 'User' },
@@ -44,7 +45,7 @@ export const ContentModel = model( "Content", ContentSchema);
 
 export const connectDB = async () => {
   try {
-    await mongoose.connect('');
+    await mongoose.connect('mongodb+srv://kartiksingh3337:LRuxds1xgKjzZSSI@cluster0.ekxflnu.mongodb.net/Brainly');
     console.log('MongoDB connected');
   } catch (err: any) {
     console.error(err.message);

@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "brainly-front",
   "private": true,
   "version": "0.0.0",
@@ -32,32 +31,5 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.2"
-=======
-  "name": "brainly",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "build": "tsc -b",
-    "start": "node dist/index.js",
-    "dev": "npm run build && npm run start"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@types/express": "^5.0.3",
-    "@types/jsonwebtoken": "^9.0.10",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.17.1",
-    "nanoid": "^5.1.5"
-  },
-  "devDependencies": {
-    "@types/mongoose": "^5.11.96",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
->>>>>>> 64a20d472433730077d80846d5a7f24140c1797d
   }
 }

@@ -1,116 +1,109 @@
-<<<<<<< HEAD
-# React + TypeScript + Vite
+# 🧠 Second Brain App - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A beautiful, modern **Second Brain App** built with **React, Vite, and TailwindCSS**.  
+This app helps users capture, organize, and retrieve their notes, ideas, YouTube videos, tweets, and links in one place — acting as a digital "second brain".
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎮 Demo Credentials
 
-## Expanding the ESLint configuration
+> **Want to test the app? Use these demo credentials:**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Field | Value |
+|-------|-------|
+| 👤 **Username** | `demo` |
+| 🔑 **Password** | `demo123` |
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-=======
-# 🧠 Second Brain App
-
-(currently backend only)
-
-A **Second Brain App** built with the **MERN stack (MongoDB, Express, React, Node.js)**.  
-This app helps users capture, organize, and retrieve their notes, tasks, and ideas in one place — acting as a digital "second brain".
+> 💡 **Tip:** You can also create your own account to have a personalized experience!
 
 ---
 
 ## 🚀 Features
-- ✍️ Create, edit, and delete notes  
-- 📂 Organize content with tags  
-- 🔍 Search and filter through saved content  
-- 🔐 User authentication & secure login  
-- ⚡ Responsive and fast UI with React  
-- 🌐 RESTful APIs powered by Node.js & Express  
-- 🗄️ Data stored in MongoDB  
+
+- ✍️ **Create, edit, and delete notes** - Save YouTube videos, tweets, and links
+- 📂 **Organize content** - Filter by type (YouTube, Twitter, Links)
+- 🔍 **Search functionality** - Quickly find saved content
+- 🔐 **User authentication** - Secure login with JWT
+- 🌓 **Dark theme** - Beautiful purple-themed dark UI
+- 📱 **Responsive design** - Works on all devices
+- 🔗 **Share your brain** - Invite friends with view-only access
+- 📲 **Share via social** - WhatsApp, Twitter, LinkedIn, Telegram, Email
 
 ---
 
 ## 🛠️ Tech Stack
-- **Frontend**: React.js, Tailwind CSS  
-- **Backend**: Node.js, Express.js  
-- **Database**: MongoDB  
-- **Authentication**: JWT (JSON Web Tokens)  
 
----
-
-## 📊 Example Metric
-> Optimized API response time by **25%** through efficient MongoDB query indexing.  
-
----
-
-## 📸 Screenshots
-(Add screenshots of your app here once you run it locally.)
+- **Frontend**: React 19, Vite 7, TailwindCSS 4
+- **Routing**: React Router 7
+- **HTTP Client**: Axios
+- **Icons**: Custom SVG icons
 
 ---
 
 ## 📦 Installation & Setup
 
-1. Clone the repository  
+1. Install dependencies
    ```bash
-   git clone https://github.com/your-username/second-brain-app.git
-   cd second-brain-app
->>>>>>> 64a20d472433730077d80846d5a7f24140c1797d
+   cd brainly-front
+   npm install
+   ```
+
+2. Start the development server
+   ```bash
+   npm run dev
+   ```
+
+3. Open http://localhost:5173 in your browser
+
+---
+
+## 🎨 Screenshots
+
+### Landing Page
+Beautiful dark-themed landing page with gradient animations
+
+### Dashboard
+Clean interface with search, filters, and grid/list view toggle
+
+### Share Feature
+Share your brain with friends via WhatsApp, Twitter, LinkedIn, and more!
+
+---
+
+## 📁 Project Structure
+
+```
+brainly-front/
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── icons/          # SVG icon components
+│   ├── hooks/          # Custom React hooks
+│   ├── pages/          # Page components
+│   │   ├── Landing.tsx
+│   │   ├── Signin.tsx
+│   │   ├── Signup.tsx
+│   │   ├── dashboard.tsx
+│   │   └── SharedBrain.tsx
+│   ├── App.tsx         # Main app with routing
+│   └── main.tsx        # Entry point
+├── public/             # Static assets
+└── package.json
+```
+
+---
+
+## 🔗 API Endpoints Used
+
+- `POST /api/v1/signup` - User registration
+- `POST /api/v1/signin` - User login
+- `GET /api/v1/content` - Fetch user's content
+- `POST /api/v1/content` - Add new content
+- `DELETE /api/v1/content` - Delete content
+- `POST /api/v1/brain/share` - Generate share link
+- `GET /api/v1/brain/:shareLink` - View shared brain
+
+---
+
+## 📄 License
+
+MIT License - feel free to use this project for learning or personal use!

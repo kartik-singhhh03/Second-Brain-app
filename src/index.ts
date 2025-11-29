@@ -1,5 +1,5 @@
 import express from 'express';
-
+import cors from 'cors';
 
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
@@ -16,6 +16,7 @@ import { random } from "./utils.js";
 
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // Signup route
@@ -68,11 +69,13 @@ app.post(('/api/v1/signin'), async (req, res) => {
 app.post('/api/v1/content',userMiddleware, async (req, res) => {
 
     const link = req.body.link;
-    const type = req.body.title;
+    const title = req.body.title;
+    const type = req.body.type || 'link';
 
     await ContentModel.create({
-        title: type,
+        title: title,
         link: link,
+        type: type,
         //@ts-ignore
         userId: req.userId,
         tags: []
@@ -187,7 +190,4 @@ connectDB().then(() => {
   });
 }).catch(err => {
   console.error("❌ Failed to connect to MongoDB:", err.message);
-});
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
 });

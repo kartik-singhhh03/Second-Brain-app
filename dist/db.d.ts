@@ -127,6 +127,7 @@ export declare const ContentModel: mongoose.Model<{
         createFromBase64?: any;
         isValid?: any;
     }>;
+    type?: unknown;
     link?: unknown;
     title?: unknown;
     userId?: {
@@ -165,6 +166,7 @@ export declare const ContentModel: mongoose.Model<{
         createFromBase64?: any;
         isValid?: any;
     }>;
+    type?: unknown;
     link?: unknown;
     title?: unknown;
     userId?: {
@@ -203,6 +205,7 @@ export declare const ContentModel: mongoose.Model<{
         createFromBase64?: any;
         isValid?: any;
     }>;
+    type?: unknown;
     link?: unknown;
     title?: unknown;
     userId?: {
@@ -220,6 +223,7 @@ export declare const ContentModel: mongoose.Model<{
 } & {
     __v: number;
 }, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
+    type: string;
     title: string;
     tags: {
         prototype?: mongoose.Types.ObjectId | null;
@@ -242,6 +246,7 @@ export declare const ContentModel: mongoose.Model<{
     link?: string | null;
     authorId?: string | null;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
+    type: string;
     title: string;
     tags: {
         prototype?: mongoose.Types.ObjectId | null;
@@ -264,6 +269,7 @@ export declare const ContentModel: mongoose.Model<{
     link?: string | null;
     authorId?: string | null;
 }>, {}, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & mongoose.FlatRecord<{
+    type: string;
     title: string;
     tags: {
         prototype?: mongoose.Types.ObjectId | null;
