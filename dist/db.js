@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import { model, Schema } from 'mongoose';
+dotenv.config();
 const UserSchema = new Schema({
     username: { type: Schema.Types.String, required: true, unique: true },
     password: { type: Schema.Types.String, required: true }
@@ -21,7 +23,8 @@ export const LinkModel = model("Links", LinkSchema);
 export const ContentModel = model("Content", ContentSchema);
 export const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb+srv://kartiksingh3337:LRuxds1xgKjzZSSI@cluster0.ekxflnu.mongodb.net/Brainly');
+        const mongoUri = process.env.MONGODB_URI || 'mongodb+srv://kartiksingh3337:LRuxds1xgKjzZSSI@cluster0.ekxflnu.mongodb.net/Brainly';
+        await mongoose.connect(mongoUri);
         console.log('MongoDB connected');
     }
     catch (err) {

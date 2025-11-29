@@ -182,7 +182,7 @@ app.get('/api/v1/brain/:shareLink', async (req, res) => {
   }
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 connectDB().then(() => {
   app.listen(PORT, () => {

@@ -1,7 +1,9 @@
 
 import mongoose from 'mongoose';
-
+import dotenv from 'dotenv';
 import {model , Schema} from 'mongoose';
+
+dotenv.config();
 
 
 
@@ -45,7 +47,8 @@ export const ContentModel = model( "Content", ContentSchema);
 
 export const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb+srv://kartiksingh3337:LRuxds1xgKjzZSSI@cluster0.ekxflnu.mongodb.net/Brainly');
+    const mongoUri = process.env.MONGODB_URI || 'mongodb+srv://kartiksingh3337:LRuxds1xgKjzZSSI@cluster0.ekxflnu.mongodb.net/Brainly';
+    await mongoose.connect(mongoUri);
     console.log('MongoDB connected');
   } catch (err: any) {
     console.error(err.message);

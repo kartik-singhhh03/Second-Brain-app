@@ -1,1 +1,4 @@
-export const JWT_PASSWORD = "12345"
+import dotenv from 'dotenv';
+dotenv.config();
+
+export const JWT_PASSWORD = process.env.JWT_SECRET || "12345";
