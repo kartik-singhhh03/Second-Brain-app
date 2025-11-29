@@ -19,6 +19,8 @@ This app helps users capture, organize, and retrieve their YouTube videos, tweet
 
 ---
 
+<img width="1918" height="962" alt="Screenshot 2025-11-29 183928" src="https://github.com/user-attachments/assets/cfdfabde-5b3c-483f-8e21-207e54fefdc8" />
+
 ## 🚀 Features
 
 - ✍️ **Save Content** - YouTube videos, tweets, and links  
