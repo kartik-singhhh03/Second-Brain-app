@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Button } from '../components/button';
-import '../App.css';
-import { PlusIcon } from '../icons/plusicon';
-import { ShareIcon } from '../icons/shareIcon';
-import { Card } from '../components/card';
+import { PlusIcon } from '../icons/Plusicon';
+import { ShareIcon } from '../icons/Shareicon';
+import { Card } from '../components/Card';
 import { CreatComponentModal } from '../components/CreateContentModal';
 import { Sidebar } from '../components/sidebar';
 import { useContent } from '../hooks/useContent';
